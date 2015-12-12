@@ -10,7 +10,7 @@ struct Parameters initialize(){
   parameters.customers_in_queue=0;
   parameters.time_of_last_event=0;
   parameters.number_blocked=0;
-  parameters.total_customer_num=0;
+  parameters.total_number_customers=0;
   parameters.total_time_spent=0;
 
   return parameters;
