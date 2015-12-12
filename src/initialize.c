@@ -1,5 +1,6 @@
 #include "initialize.h"
 #include "struct.h"
+#include "queue.h"
 
 struct Parameters initialize(){
 

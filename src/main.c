@@ -6,10 +6,9 @@
 /**
  *
  **/
-int main(int argc, char *argv[])
-{
-    struct Parameters parameters = initialize();
+int main(int argc, char *argv[]){
 
+    struct Parameters parameters = initialize();
     printf("%d", parameters.clock);
 
     return EXIT_SUCCESS;
