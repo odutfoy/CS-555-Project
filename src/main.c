@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "struct.h"
+#include "initialize.h"
 
 /**
- *
  *
  **/
 int main(int argc, char *argv[])
 {
-    int i = 1;
-    printf("%d", i);
+    struct Parameters parameters = initialize();
+
+    printf("%d", parameters.clock);
 
     return EXIT_SUCCESS;
 }
