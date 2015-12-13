@@ -5,6 +5,13 @@ float test_rng(int size){
 
   srand(time(NULL));
   
+  FILE *f = fopen("tmp/seq1.txt", "w");
+
+  if (f == NULL){
+    printf("Error opening one of the files!\n");
+    exit(1);
+}
+
   float sequence[size];
   int i;
   float error = 0;
@@ -23,9 +30,16 @@ float test_rng(int size){
     tmp = 1 - (float)rand()/RAND_MAX;
     assert(tmp <= 1 && tmp >= 0 && "number generated not between 0 and 1");
     error += fabs(sequence[i] - tmp);
+    fprintf(f, "%f," , tmp);
   }
   
   printf("The mean difference between elements of both generated sequence is %f \n" , error/(float)size);
+
+  //removing last ',' of file
+  fseek(f,-1,SEEK_END);
+  ftruncate(f, ftell(f));
+
+  fclose(f);
   
   return error/(float)size;
 }

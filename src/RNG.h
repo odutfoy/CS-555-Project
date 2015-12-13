@@ -9,6 +9,7 @@
 
 /**
  * Displays the average difference between two corresponding elements of 2 sequences of random numbers between 0 and 1 generated with different seeds
+ * Writes the values of one of the sequences in a file in order to plot a graph representing distribution
  * Parameters :
  * size : size of sequences to generate (strictly positive integer)
  * Output : mean error between two corresponding elements of the sequences

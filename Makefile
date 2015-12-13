@@ -1,10 +1,11 @@
 CC=gcc
-CFLAGS=-W -Wall -std=c99
-LDFLAGS=-lm
+CFLAGS=-W -Wall -std=c99 
+LDFLAGS=-lm 
 EXEC=simulator
 SRC=src/
 BIN=bin/
 OBJ=obj/
+TMP=tmp/
 
 all: $(EXEC)
 
@@ -35,3 +36,4 @@ RNG.o: $(SRC)RNG.h $(SRC)RNG.c
 clean:
 	rm $(BIN)*
 	rm $(OBJ)*
+	rm $(TMP)*
