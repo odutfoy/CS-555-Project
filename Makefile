@@ -16,7 +16,7 @@ test: main-test.o RNG.o
 	$(CC) -o $(BIN)test $(OBJ)main-test.o $(OBJ)RNG.o $(CFLAGS) $(LDFLAGS)
 
 main.o: $(SRC)main.c initialize.o eventroutine.o timing.o
-	$(CC) -o $(OBJ)main.o -c $(SRC)main.c $(OBJ)eventroutine.o $(OBJ)initialize.o $(OBJ)timing.o $(CFLAGS)
+	$(CC) -o $(OBJ)main.o -c $(SRC)main.c $(CFLAGS)
 
 main-test.o: $(SRC)main-test.c RNG.o
 	$(CC) -o $(OBJ)main-test.o -c $(SRC)main-test.c $(CFLAGS)

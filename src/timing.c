@@ -9,5 +9,4 @@ void clock_update(struct Parameters* parameters){
      parameters->event_iterator = listiterator__goto_next(parameters->event_iterator);
 
   parameters->clock += ((struct Event *)listiterator__get_data(parameters->event_iterator))->time;
-
 }
