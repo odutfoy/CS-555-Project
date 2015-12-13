@@ -38,7 +38,6 @@ struct Parameters initialize(float lambda, float mu){
 
   parameters.event_iterator=listiterator__goto_previous(parameters.event_iterator);
   parameters.event_iterator=listiterator__goto_previous(parameters.event_iterator);
-  parameters.event_iterator=listiterator__goto_previous(parameters.event_iterator);
 
   return parameters;
 }
