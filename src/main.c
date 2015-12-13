@@ -11,6 +11,7 @@ int main(int argc, char *argv[]){
     float mu = 1.0;
     int m = 2;
     int s = 5;
+    int max_clock = 1000;
 
     struct Parameters parameters = initialize(lambda, mu);
 
