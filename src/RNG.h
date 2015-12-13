@@ -5,7 +5,6 @@
 #include <assert.h>
 #include <unistd.h>
 
-
 #ifndef RNH_h
 #define RNG_h
 
@@ -35,6 +34,6 @@ float exp_distrib(float mu);
  * Output : arrival time
 **/
 
- int poisson_distrib(float lambda);
+float poisson_distrib(float lambda);
 
 #endif

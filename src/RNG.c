@@ -1,5 +1,4 @@
 #include "RNG.h"
-#include <unistd.h>
 
 float test_rng(int size){
   assert(size > 0 && "size must be strictly positive");
@@ -49,7 +48,7 @@ float exp_distrib(float mu){
   return log(1-r)*(-mu);
 }
 
-int poisson_distrib(float lambda){
+float poisson_distrib(float lambda){
   float L = exp(-lambda);
   int k = 0;
   float p = 1;
@@ -61,7 +60,7 @@ int poisson_distrib(float lambda){
     p *= r;
   } while (p > L);
 
-  return k-1;
+  return (float)k-1;
 }
 
 

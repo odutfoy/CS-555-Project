@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-W -Wall  
+CFLAGS=-W -Wall 
 LDFLAGS=-lm 
 EXEC=simulator
 SRC=src/
