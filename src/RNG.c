@@ -1,4 +1,5 @@
 #include "RNG.h"
+#include <unistd.h>
 
 float test_rng(int size){
   assert(size > 0 && "size must be strictly positive");
@@ -7,11 +8,8 @@ float test_rng(int size){
   
   FILE *f = fopen("tmp/uniform-seq.csv", "w");
 
-  if (f == NULL){
-    printf("Error opening one of the files!\n");
-    exit(1);
-}
-
+  assert(f != NULL && "Error opening file!");
+ 
   float sequence[size];
   int i;
   float error = 0;
@@ -37,7 +35,7 @@ float test_rng(int size){
 
   //removing last ',' of file
   fseek(f,-1,SEEK_END);
-  ftruncate(f, ftell(f));
+  ftruncate(fileno(f), ftell(f));
 
   fclose(f);
   
