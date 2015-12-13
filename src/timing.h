@@ -1,5 +1,7 @@
-#ifndef CLOCK_H
-#define CLOCK_H
+#ifndef TIMING_H
+#define TIMING_H
+
+#include "struct.h"
 
 void clock_update(struct Parameters* parameters);
 

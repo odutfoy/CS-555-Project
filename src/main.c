@@ -1,19 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.h"
+#include "timing.h"
 #include "initialize.h"
+#include "eventroutine.h"
 
 int main(int argc, char *argv[]){
 
     float lambda = 2.0;
     float mu = 1.0;
     int m = 2;
-    int s = 5
+    int s = 5;
 
     struct Parameters parameters = initialize(lambda, mu);
 
-    printf("First arrival time: %f\n", ((struct Event*)(parameters.headp)->data)->time);
-    printf("First departure time: %f\n", ((struct Event*)listnode__get_next(parameters.headp)->data)->time);
+    while(1){
+      clock_update(&parameters);
+    }
 
     return EXIT_SUCCESS;
 }

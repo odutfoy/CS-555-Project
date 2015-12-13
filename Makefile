@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-W -Wall 
-LDFLAGS=-lm 
+CFLAGS=-W -Wall
+LDFLAGS=-lm
 EXEC=simulator
 SRC=src/
 BIN=bin/
@@ -9,8 +9,8 @@ TMP=tmp/
 
 all: $(EXEC)
 
-simulator: main.o initialize.o queue.o utilitary.o RNG.o
-	$(CC) -o $(BIN)simulator $(OBJ)main.o $(OBJ)initialize.o $(OBJ)queue.o $(OBJ)utilitary.o $(OBJ)RNG.o $(CFLAGS) $(LDFLAGS)
+simulator: main.o initialize.o queue.o utilitary.o RNG.o timing.o
+	$(CC) -o $(BIN)simulator $(OBJ)main.o $(OBJ)initialize.o $(OBJ)queue.o $(OBJ)utilitary.o $(OBJ)RNG.o $(OBJ)timing.o $(CFLAGS) $(LDFLAGS)
 
 test: main-test.o RNG.o
 	$(CC) -o $(BIN)test $(OBJ)main-test.o $(OBJ)RNG.o $(CFLAGS) $(LDFLAGS)
@@ -26,6 +26,9 @@ initialize.o: $(SRC)initialize.h $(SRC)initialize.c $(SRC)struct.h
 
 queue.o: $(SRC)queue.h $(SRC)queue.c
 	$(CC) -o $(OBJ)queue.o -c $(SRC)queue.c $(CFLAGS)
+
+timing.o: $(SRC)timing.h $(SRC)timing.c
+	$(CC) -o $(OBJ)timing.o -c $(SRC)timing.c $(CFLAGS)
 
 utilitary.o: $(SRC)utilitary.h $(SRC)utilitary.c RNG.o
 	$(CC) -o $(OBJ)utilitary.o -c $(SRC)utilitary.c $(OBJ)RNG.o $(CFLAGS)
