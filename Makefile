@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-W -Wall 
+CFLAGS=-W -Wall
 LDFLAGS=-lm -std=c99
 EXEC=simulator
 SRC=src/
@@ -27,8 +27,8 @@ queue.o: $(SRC)queue.h
 	$(CC) -o $(OBJ)queue.o -c $(SRC)queue.h $(CFLAGS)
 
 RNG.o: $(SRC)RNG.h
-	$(CC) -o $(OBJ)RNG.o -c $(SRC)RNG.c $(CFLAGS) 
+	$(CC) -o $(OBJ)RNG.o -c $(SRC)RNG.c $(CFLAGS)
 
 clean:
-	rm bin/*
-	rm obj/*
+	rm $(BIN)*
+	rm $(OBJ)*
