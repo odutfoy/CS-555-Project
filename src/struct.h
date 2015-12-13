@@ -1,6 +1,7 @@
+#include "queue.h"
+
 #ifndef STRUCT_H
 #define STRUCT_H
-
 
 struct Event {
   int time;
@@ -27,6 +28,7 @@ struct Parameters{
   int number_blocked;
   int total_number_customers;
   int total_time_spent;
+  struct listnode* headp;
 };
 
 #endif

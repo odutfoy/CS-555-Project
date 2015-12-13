@@ -1,6 +1,4 @@
 #include "initialize.h"
-#include "struct.h"
-#include "queue.h"
 
 struct Parameters initialize(){
 
@@ -13,6 +11,7 @@ struct Parameters initialize(){
   parameters.number_blocked=0;
   parameters.total_number_customers=0;
   parameters.total_time_spent=0;
+  parameters.headp = listnode__alloc_empty();
 
   return parameters;
 }
