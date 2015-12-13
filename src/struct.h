@@ -23,16 +23,18 @@ enum Type
 */
 struct Parameters{
   float clock;
-  int server_status;
-  int customers_in_queue;
+  int number_busy_servers;
+  int number_customers_in_queue;
   int time_of_last_event;
   int number_blocked;
   int total_number_customers;
   int total_time_spent;
 
   int m;
-  int s;
+  int c;
   int max_clock;
+  float lambda;
+  float mu;
 
   struct linkedlist* event_list;
   struct listiterator event_iterator;

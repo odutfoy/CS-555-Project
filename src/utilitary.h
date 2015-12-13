@@ -3,8 +3,9 @@
 
 #include "struct.h"
 
-void add_arrival(void);
-void add_departure(void);
+struct Event * create_arrival(struct Parameters* parameter);
+struct Event * create_departure(struct Parameters* parameter);
 struct Event * create_event(float time, Type type);
+void add_event(struct Event * event, struct Parameters* parameters);
 
 #endif

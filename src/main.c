@@ -10,10 +10,10 @@ int main(int argc, char *argv[]){
   float lambda=2.0;
   float mu=1.0;
   int m=2;
-  int s=5;
+  int c=5;
   int max_clock=4;
 
-  struct Parameters parameters = initialize(lambda, mu, m, s, max_clock);
+  struct Parameters parameters = initialize(lambda, mu, m, c, max_clock);
 
   while(1){
     clock_update(&parameters);

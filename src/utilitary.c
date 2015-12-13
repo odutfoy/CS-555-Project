@@ -1,10 +1,12 @@
 #include "utilitary.h"
 #include "RNG.h"
 
-void add_arrival(){
+struct Event * create_arrival(struct Parameters* parameters){
+  create_event(parameters->clock + poisson_distrib(parameters->lambda), ARRIVAL);
 }
 
-void add_departure(){
+struct Event * create_departure(struct Parameters* parameters){
+  return create_event(parameters->clock + exp_distrib(parameters->mu), DEPARTURE);
 }
 
 struct Event * create_event(float time, Type type){
@@ -13,4 +15,8 @@ struct Event * create_event(float time, Type type){
   new_event->type=type;
 
   return new_event;
+}
+
+void add_event(struct Event * event, struct Parameters* parameters){
+
 }
