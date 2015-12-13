@@ -1,8 +1,8 @@
 #include "initialize.h"
 
 /*
- * Initialize parameters and first events
- */
+* Initialize parameters and first events
+*/
 struct Parameters initialize(float lambda, float mu){
 
   /* Create first nodes (a event 0, an arrival and a departure) */
