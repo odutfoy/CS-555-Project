@@ -9,8 +9,8 @@ TMP=tmp/
 
 all: $(EXEC)
 
-simulator: main.o struct.o initialize.o queue.o utilitary.o RNG.o timing.o eventroutine.o 
-	$(CC) -o $(BIN)simulator $(OBJ)main.o $(OBJ)struct.o $(OBJ)initialize.o $(OBJ)queue.o $(OBJ)utilitary.o $(OBJ)RNG.o $(OBJ)eventroutine.o $(OBJ)timing.o $(CFLAGS) $(LDFLAGS)
+simulator: main.o initialize.o queue.o utilitary.o RNG.o timing.o eventroutine.o
+	$(CC) -o $(BIN)simulator $(OBJ)main.o $(OBJ)initialize.o $(OBJ)queue.o $(OBJ)utilitary.o $(OBJ)RNG.o $(OBJ)eventroutine.o $(OBJ)timing.o $(CFLAGS) $(LDFLAGS)
 
 test: main-test.o RNG.o
 	$(CC) -o $(BIN)test $(OBJ)main-test.o $(OBJ)RNG.o $(CFLAGS) $(LDFLAGS)
@@ -35,9 +35,6 @@ utilitary.o: $(SRC)utilitary.c $(SRC)utilitary.h
 
 eventroutine.o: $(SRC)eventroutine.c  $(SRC)eventroutine.h
 	$(CC) -o $(OBJ)eventroutine.o -c $(SRC)eventroutine.c $(CFLAGS)
-
-struct.o: $(SRC)struct.h
-	$(CC) -o $(OBJ)struct.o -c $(SRC)struct.h $(CFLAGS)
 
 RNG.o: $(SRC)RNG.c $(SRC)RNG.h
 	$(CC) -o $(OBJ)RNG.o -c $(SRC)RNG.c $(CFLAGS)
