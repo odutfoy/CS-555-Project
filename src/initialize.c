@@ -4,6 +4,20 @@
  * Initialize parameters and first events
  */
 struct Parameters initialize(float lambda, float mu){
+
+  /* Add first nodes (a event 0, an arrival and a departure) */
+  struct Event * init_event = malloc(sizeof(init_event));
+  init_event->time = 0.0;
+  init_event->type = INIT;
+
+  struct Event * first_arrival = malloc(sizeof(first_arrival));
+  first_arrival->time = poisson_distrib(lambda);
+  first_arrival->type = ARRIVAL;
+
+  struct Event * first_departure = malloc(sizeof(first_departure));
+  first_departure->time = first_arrival->time + exp_distrib(mu);
+  first_departure->type = DEPARTURE;
+
   /* Declare and initialize parameters */
   struct Parameters parameters;
 
@@ -14,26 +28,21 @@ struct Parameters initialize(float lambda, float mu){
   parameters.number_blocked=0;
   parameters.total_number_customers=0;
   parameters.total_time_spent=0;
-  parameters.headp=listnode__alloc_empty();
+  parameters.event_list=linkedlist__alloc_empty();
 
-  /* Add first nodes (an arrival and a departure) */
-  struct Event * first_arrival = malloc(sizeof(first_arrival));
-  first_arrival->time = poisson_distrib(lambda);
-  first_arrival->type = ARRIVAL;
-  listnode__set_data(parameters.headp, first_arrival);
+  linkedlist__push_back(parameters.event_list, init_event);
 
-  struct Event * first_departure = malloc(sizeof(first_departure));
-  first_departure->time = first_arrival->time + exp_distrib(mu);
-  first_departure->type = DEPARTURE;
+  parameters.event_iterator=listiterator__init_iterator(parameters.event_list);
 
-  struct listnode * next_event = malloc(sizeof(next_event));
-  listnode__set_data(next_event, first_departure);
-  listnode__set_next(parameters.headp, next_event);
+  linkedlist__push_back(parameters.event_list, first_arrival);
+  linkedlist__push_back(parameters.event_list, first_departure);
 
   /* Test the initialization */
-  assert(parameters.headp->data == first_arrival && "First node content != first arrival");
-  assert(listnode__get_next(parameters.headp) == next_event && "2nd node != first departure's node");
-  assert(listnode__get_next(parameters.headp)->data == first_departure && "2nd node content != first departure");
+  assert(listiterator__get_data(parameters.event_iterator) == init_event && "1st node content != init event");
+  parameters.event_iterator=listiterator__goto_next(parameters.event_iterator);
+  assert(listiterator__get_data(parameters.event_iterator) == first_arrival && "2nd node != first arrival event");
+  parameters.event_iterator=listiterator__goto_next(parameters.event_iterator);
+  assert(listiterator__get_data(parameters.event_iterator) == first_departure && "3nd node content != first departure event");
 
   return parameters;
 }

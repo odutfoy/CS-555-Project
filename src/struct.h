@@ -6,7 +6,7 @@
 typedef enum Type Type;
 enum Type
 {
-    DEPARTURE, ARRIVAL
+    INIT, DEPARTURE, ARRIVAL
 };
 
 /*
@@ -38,7 +38,8 @@ struct Parameters{
   int number_blocked;
   int total_number_customers;
   int total_time_spent;
-  struct listnode* headp;
+  struct linkedlist* event_list;
+  struct listiterator event_iterator;
 };
 
 #endif
