@@ -2,12 +2,12 @@
 
 void new_arrival_process(struct Parameters* parameters){
   printf("Coucou, t'as reçu un client !\n");
-  printf("Clock: %d\n", parameters->clock);
+  printf("Clock: %f\n", parameters->clock);
 }
 
 void new_departure_process(struct Parameters* parameters){
   printf("Cours, ton client se barre !\n");
-  printf("Clock: %d\n", parameters->clock);
+  printf("Clock: %f\n", parameters->clock);
 }
 
 void test_stop_condition(struct Parameters* parameters){

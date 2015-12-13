@@ -22,7 +22,7 @@ enum Type
 *  - total_time_spent: overall time spent in the system by customers
 */
 struct Parameters{
-  int clock;
+  float clock;
   int server_status;
   int customers_in_queue;
   int time_of_last_event;
