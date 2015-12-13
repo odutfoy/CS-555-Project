@@ -3,12 +3,15 @@
 /*
 * Initialize parameters and first events
 */
-struct Parameters initialize(float lambda, float mu){
+struct Parameters initialize(float lambda, float mu, int m, int s, int max_clock){
 
   /* Create first nodes (a event 0, an arrival and a departure) */
   struct Event * init_event=create_event(0.0, INIT);
   struct Event * first_arrival=create_event(poisson_distrib(lambda), ARRIVAL);
   struct Event * first_departure=create_event(first_arrival->time+exp_distrib(mu), DEPARTURE);
+
+  printf("First arrival time %f\n", first_arrival->time);
+  printf("First departure time %f\n", first_departure->time);
 
   /* Declare and initialize parameters */
   struct Parameters parameters;
@@ -20,6 +23,9 @@ struct Parameters initialize(float lambda, float mu){
   parameters.number_blocked=0;
   parameters.total_number_customers=0;
   parameters.total_time_spent=0;
+  parameters.m=m;
+  parameters.s=s;
+  parameters.max_clock=max_clock;
   parameters.event_list=linkedlist__alloc_empty();
 
   linkedlist__push_back(parameters.event_list, init_event);

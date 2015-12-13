@@ -29,6 +29,11 @@ struct Parameters{
   int number_blocked;
   int total_number_customers;
   int total_time_spent;
+
+  int m;
+  int s;
+  int max_clock;
+
   struct linkedlist* event_list;
   struct listiterator event_iterator;
 };

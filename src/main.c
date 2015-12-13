@@ -11,9 +11,9 @@ int main(int argc, char *argv[]){
   float mu=1.0;
   int m=2;
   int s=5;
-  int max_clock=1000;
+  int max_clock=4;
 
-  struct Parameters parameters = initialize(lambda, mu);
+  struct Parameters parameters = initialize(lambda, mu, m, s, max_clock);
 
   while(1){
     clock_update(&parameters);
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]){
       exit(2);
     }
 
-    break;
+    test_stop_condition(&parameters);
   }
   printf("Finished !");
   return EXIT_SUCCESS;
