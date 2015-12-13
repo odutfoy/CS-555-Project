@@ -21,14 +21,14 @@ main.o: $(SRC)main.c initialize.o eventroutine.o timing.o
 main-test.o: $(SRC)main-test.c RNG.o
 	$(CC) -o $(OBJ)main-test.o -c $(SRC)main-test.c $(CFLAGS)
 
-initialize.o: $(SRC)initialize.h $(SRC)initialize.c struct.o
-	$(CC) -o $(OBJ)initialize.o -c $(SRC)initialize.c $(OBJ)struct.o $(CFLAGS)
+initialize.o: $(SRC)initialize.h $(SRC)initialize.c
+	$(CC) -o $(OBJ)initialize.o -c $(SRC)initialize.c $(CFLAGS)
 
 queue.o: $(SRC)queue.h $(SRC)queue.c
 	$(CC) -o $(OBJ)queue.o -c $(SRC)queue.c $(CFLAGS)
 
-timing.o: $(SRC)timing.h $(SRC)timing.c struct.o queue.o
-	$(CC) -o $(OBJ)timing.o -c $(SRC)timing.c $(OBJ)struct.o $(OBJ)queue.o $(CFLAGS)
+timing.o: $(SRC)timing.h $(SRC)timing.c
+	$(CC) -o $(OBJ)timing.o -c $(SRC)timing.c $(CFLAGS)
 
 utilitary.o: $(SRC)utilitary.h $(SRC)utilitary.c
 	$(CC) -o $(OBJ)utilitary.o -c $(SRC)utilitary.c $(CFLAGS)
