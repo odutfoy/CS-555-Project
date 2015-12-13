@@ -30,9 +30,7 @@ float test_rng(int size){
   return error/(float)size;
 }
 
-float exp_distrib(float mu){
-  srand(time(NULL));
-  
+float exp_distrib(float mu){  
   float r = 1 - (float)rand()/RAND_MAX;
   assert(r < 1 && r >= 0 && "number generated not between 0 and 1");
 
