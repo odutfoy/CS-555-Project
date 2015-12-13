@@ -5,7 +5,7 @@ float test_rng(int size){
 
   srand(time(NULL));
   
-  FILE *f = fopen("tmp/seq1.txt", "w");
+  FILE *f = fopen("tmp/uniform-seq.csv", "w");
 
   if (f == NULL){
     printf("Error opening one of the files!\n");
@@ -33,7 +33,7 @@ float test_rng(int size){
     fprintf(f, "%f," , tmp);
   }
   
-  printf("The mean difference between elements of both generated sequence is %f \n" , error/(float)size);
+  printf("The mean difference between elements of both generated sequences is %f \n" , error/(float)size);
 
   //removing last ',' of file
   fseek(f,-1,SEEK_END);

@@ -4,7 +4,7 @@
 
 int main(){
   printf("Hello World\n");
-  test_rng(1000000);
+  test_rng(10000);
 
   srand(time(NULL));
   
