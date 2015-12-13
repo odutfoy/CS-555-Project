@@ -5,18 +5,10 @@
  */
 struct Parameters initialize(float lambda, float mu){
 
-  /* Add first nodes (a event 0, an arrival and a departure) */
-  struct Event * init_event = malloc(sizeof(init_event));
-  init_event->time = 0.0;
-  init_event->type = INIT;
-
-  struct Event * first_arrival = malloc(sizeof(first_arrival));
-  first_arrival->time = poisson_distrib(lambda);
-  first_arrival->type = ARRIVAL;
-
-  struct Event * first_departure = malloc(sizeof(first_departure));
-  first_departure->time = first_arrival->time + exp_distrib(mu);
-  first_departure->type = DEPARTURE;
+  /* Create first nodes (a event 0, an arrival and a departure) */
+  struct Event * init_event=create_event(0.0, INIT);
+  struct Event * first_arrival=create_event(poisson_distrib(lambda), ARRIVAL);
+  struct Event * first_departure=create_event(first_arrival->time+exp_distrib(mu), DEPARTURE);
 
   /* Declare and initialize parameters */
   struct Parameters parameters;
@@ -43,6 +35,10 @@ struct Parameters initialize(float lambda, float mu){
   assert(listiterator__get_data(parameters.event_iterator) == first_arrival && "2nd node != first arrival event");
   parameters.event_iterator=listiterator__goto_next(parameters.event_iterator);
   assert(listiterator__get_data(parameters.event_iterator) == first_departure && "3nd node content != first departure event");
+
+  parameters.event_iterator=listiterator__goto_previous(parameters.event_iterator);
+  parameters.event_iterator=listiterator__goto_previous(parameters.event_iterator);
+  parameters.event_iterator=listiterator__goto_previous(parameters.event_iterator);
 
   return parameters;
 }
