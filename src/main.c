@@ -7,6 +7,8 @@ int main(int argc, char *argv[]){
 
     float lambda = 2.0;
     float mu = 1.0;
+    int m = 2;
+    int s = 5
 
     struct Parameters parameters = initialize(lambda, mu);
 
