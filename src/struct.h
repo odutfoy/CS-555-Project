@@ -3,9 +3,19 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
+typedef enum Type Type;
+enum Type
+{
+    DEPARTURE, ARRIVAL
+};
+
+/*
+ * time: time which the the event occurs
+ * type: a Type object, the type of the event
+ */
 struct Event {
-  int time;
-  int type;
+  float time;
+  Type type;
 };
 
 /*
