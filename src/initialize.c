@@ -30,5 +30,9 @@ struct Parameters initialize(float lambda, float mu){
   listnode__set_data(next_event, first_departure);
   listnode__set_next(parameters.headp, next_event);
 
+  assert(parameters.headp->data == first_arrival && "First node content != first arrival");
+  assert(listnode__get_next(parameters.headp) == next_event && "2nd node != first departure node");
+  assert(listnode__get_next(parameters.headp)->data == first_departure && "2nd node content != first departure");
+
   return parameters;
 }
