@@ -11,6 +11,9 @@ struct Parameters initialize(float lambda, float mu, int m, int c, int max_clock
 
   printf("First arrival time %f\n", first_arrival->time);
 
+  /* Initialize the RNG seed */
+  srand(time(NULL));
+
   /* Declare and initialize parameters */
   struct Parameters parameters;
 
