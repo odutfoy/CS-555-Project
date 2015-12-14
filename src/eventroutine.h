@@ -16,5 +16,6 @@ void increase_number_customers_in_queue(struct Parameters* parameters);
 void increase_number_busy_servers(struct Parameters* parameters);
 void decrease_number_busy_servers(struct Parameters* parameters);
 void decrease_number_customers_in_queue(struct Parameters* parameters);
+void add_total_time_spent(struct Parameters* parameters, float time_to_add);
 
 #endif

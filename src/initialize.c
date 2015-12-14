@@ -32,7 +32,6 @@ struct Parameters initialize(float lambda, float mu, int m, int c, int max_clock
     parameters.number_busy_servers=initial_number_customers;
     parameters.number_customers_in_queue=0;
   }
-  parameters.time_of_last_event=0;
   parameters.number_blocked=0;
   parameters.total_number_customers=initial_number_customers;
   parameters.total_time_spent=0;

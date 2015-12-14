@@ -39,8 +39,14 @@ void test_stop_condition(struct Parameters* parameters){
 }
 
 void print_stats(struct Parameters* parameters){
-  printf("Blocking probability = %f\n", (float)parameters->number_blocked/(float)parameters->total_number_customers);
-  printf("Mean number of customers = %f\n", (float)(parameters->total_number_customers-parameters->number_blocked)/parameters->clock);
+  printf("Blocking probability = %f\n", (float)parameters->number_blocked / (float)parameters->total_number_customers);
+  printf("Mean number of customers = %f\n", (float)(parameters->total_number_customers - parameters->number_blocked) / parameters->clock);
+  printf("Mean time spent per customer = %f\n", (float)(parameters->total_time_spent) / (float)(parameters->total_number_customers - parameters->number_blocked));
+}
+
+void increase_number_busy_servers(struct Parameters* parameters){
+  if(parameters->warming_up_time < parameters->clock)
+    parameters->number_busy_servers += 1;
 }
 
 void increase_blocked(struct Parameters* parameters){
@@ -58,9 +64,10 @@ void increase_number_customers_in_queue(struct Parameters* parameters){
     parameters->number_customers_in_queue += 1;
 }
 
-void increase_number_busy_servers(struct Parameters* parameters){
+
+void decrease_number_customers_in_queue(struct Parameters* parameters){
   if(parameters->warming_up_time < parameters->clock)
-    parameters->number_busy_servers += 1;
+    parameters->number_customers_in_queue -= 1;
 }
 
 void decrease_number_busy_servers(struct Parameters* parameters){
@@ -68,7 +75,7 @@ void decrease_number_busy_servers(struct Parameters* parameters){
     parameters->number_busy_servers -= 1;
 }
 
-void decrease_number_customers_in_queue(struct Parameters* parameters){
+void add_total_time_spent(struct Parameters* parameters, float time_to_add){
   if(parameters->warming_up_time < parameters->clock)
-    parameters->number_customers_in_queue -= 1;
+    parameters->total_time_spent += time_to_add;
 }

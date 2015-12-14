@@ -6,7 +6,13 @@ struct Event * create_arrival(struct Parameters* parameters){
 }
 
 struct Event * create_departure(struct Parameters* parameters){
-  return create_event(parameters->clock + exp_distrib(parameters->mu), DEPARTURE);
+  struct Event* departure = create_event(parameters->clock + exp_distrib(parameters->mu), DEPARTURE);
+  if(parameters->number_customers_in_queue > 0){
+    add_total_time_spent(parameters, departure->time - parameters->clock);
+  } else {
+    add_total_time_spent(parameters, departure->time - ((struct Event*)((parameters->event_list->headNode)->data))->time);
+  }
+  return departure;
 }
 
 struct Event * create_event(float time, Type type){

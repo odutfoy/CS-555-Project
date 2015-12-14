@@ -7,13 +7,13 @@
 
 int main(){
 
-  int initial_number_customers = 6;
+  int initial_number_customers = 0;
   float warming_up_time = 0;
 
-  float lambda=4.0;
-  float mu=6.0;
+  float lambda=2.0;
+  float mu=1.0;
   int m=2;
-  int c=5;
+  int c=2;
   int max_clock=1000;
 
   struct Parameters parameters = initialize(lambda, mu, m, c, max_clock, warming_up_time, initial_number_customers);

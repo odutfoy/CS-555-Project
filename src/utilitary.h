@@ -2,6 +2,7 @@
 #define UTILITARY_H
 
 #include "struct.h"
+#include "eventroutine.h"
 
 /**
 * Use create_event to create an arrival and returns it

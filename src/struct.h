@@ -24,12 +24,11 @@ enum Type
 struct Parameters{
   float clock;
   float warming_up_time;
+  float total_time_spent;
   int number_busy_servers;
   int number_customers_in_queue;
-  int time_of_last_event;
   int number_blocked;
   int total_number_customers;
-  int total_time_spent;
 
   int m;
   int c;
