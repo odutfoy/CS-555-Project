@@ -28,6 +28,8 @@ int main(int argc, char *argv[]){
       exit(2);
     }
 
+    printf("Event list size: %d\n", linkedlist__get_size(parameters.event_list));
+
     test_stop_condition(&parameters);
   }
   printf("Finished !");
