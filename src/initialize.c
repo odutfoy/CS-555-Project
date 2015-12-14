@@ -37,12 +37,11 @@ struct Parameters initialize(float lambda, float mu, int m, int c, int max_clock
 
   linkedlist__push_back(parameters.event_list, first_arrival);
 
-  /* Test the initialization */
-  assert(listiterator__get_data(parameters.event_iterator) == init_event && "1st node content != init event");
-  parameters.event_iterator=listiterator__goto_next(parameters.event_iterator);
-  assert(listiterator__get_data(parameters.event_iterator) == first_arrival && "2nd node != first arrival event");
-
-  parameters.event_iterator=listiterator__goto_previous(parameters.event_iterator);
+  /* Test the initialization and return to the initial state */
+  struct listiterator test_iterator = listiterator__init_iterator(parameters.event_list);
+  assert(listiterator__get_data(test_iterator) == init_event && "1st node content != init event");
+  test_iterator=listiterator__goto_next(test_iterator);
+  assert(listiterator__get_data(test_iterator) == first_arrival && "2nd node != first arrival event");
 
   return parameters;
 }

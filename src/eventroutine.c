@@ -11,6 +11,7 @@ void new_arrival_process(struct Parameters* parameters){
     parameters->number_blocked += 1;
     del_current_event(parameters);
   } else {
+    parameters->total_number_customers += 1;
     if(parameters->number_busy_servers >= parameters->m){
       parameters->number_customers_in_queue += 1;
     } else {
@@ -37,8 +38,8 @@ void new_departure_process(struct Parameters* parameters){
 }
 
 void test_stop_condition(struct Parameters* parameters){
-  if(parameters->clock > parameters->max_clock){
-    printf("Simulation finished");
+  if(parameters->clock >= parameters->max_clock){
+    printf("Simulation finished\n");
     exit(1);
   }
 }
