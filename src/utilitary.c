@@ -6,7 +6,6 @@ struct Event * create_arrival(struct Parameters* parameters){
 }
 
 struct Event * create_departure(struct Parameters* parameters){
-  printf("New departure created\n");
   return create_event(parameters->clock + exp_distrib(parameters->mu), DEPARTURE);
 }
 
@@ -23,22 +22,15 @@ void add_event(struct Event * event, struct Parameters* parameters){
   float time = event->time;
   float next_time;
   struct listiterator iterator = listiterator__init_iterator(parameters->event_list);
-  //used for debug
-  int initial_size = linkedlist__get_size(parameters->event_list);
 
   while (listiterator__has_next(iterator)){
-
     next_time = ((struct Event*)(listnode__get_next(parameters->event_list->headNode))->data)->time;
-
     if(time < next_time)
       break;
-
     iterator = listiterator__goto_next(iterator);
    }
 
   listiterator__insert_after(iterator, event);
-
-  assert(linkedlist__get_size(parameters->event_list) == initial_size + 1);
 }
 
 void del_current_event(struct Parameters* parameters){
@@ -47,6 +39,16 @@ void del_current_event(struct Parameters* parameters){
 
 void free_event(struct Event* event){
   free(event);
+}
+
+void control_asserts(struct Parameters* parameters){
+  assert(parameters->number_busy_servers <= parameters->m);
+  assert(parameters->number_busy_servers >= 0);
+
+  assert(parameters->number_customers_in_queue >= 0);
+  assert(parameters->number_customers_in_queue <= parameters->c);
+
+  assert(!(parameters->number_customers_in_queue > 0 && parameters->number_busy_servers < parameters->m));
 }
 
 void print_event(struct Event* event){

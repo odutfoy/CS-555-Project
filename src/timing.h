@@ -1,10 +1,11 @@
 #ifndef TIMING_H
 #define TIMING_H
 
-#include "struct.h"
-#include "queue.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "struct.h"
+#include "queue.h"
+#include "utilitary.h"
 
 /**
  * Updates clock

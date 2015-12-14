@@ -29,6 +29,11 @@ void add_event(struct Event * event, struct Parameters* parameters);
 void del_current_event(struct Parameters* parameter);
 
 /**
+* Free event allocated memory
+**/
+void free_event(struct Event* event);
+
+/**
 * Print the event list
 **/
 void print_list(struct Parameters* parameter);
@@ -37,5 +42,6 @@ void print_list(struct Parameters* parameter);
 * Print an event with its caracteristics
 */
 void print_event(struct Event* event);
+
 
 #endif

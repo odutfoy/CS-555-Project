@@ -1,9 +1,6 @@
 #include "eventroutine.h"
 
 void new_arrival_process(struct Parameters* parameters){
-  printf("Hey, you've a new customer !\n");
-  printf("Clock: %f\n", parameters->clock);
-
   add_event(create_arrival(parameters), parameters);
 
   if(parameters->number_customers_in_queue >= parameters->c){
@@ -23,9 +20,6 @@ void new_arrival_process(struct Parameters* parameters){
 }
 
 void new_departure_process(struct Parameters* parameters){
-  printf("Run, you're customer is leaving !\n");
-  printf("Clock: %f\n", parameters->clock);
-
   if(parameters->number_customers_in_queue == 0){
     parameters->number_busy_servers -= 1;
     del_current_event(parameters);
