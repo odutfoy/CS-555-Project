@@ -21,18 +21,19 @@ struct Event * create_event(float time, Type type){
 void add_event(struct Event * event, struct Parameters* parameters){
   //For simpler code
   float time = event->time;
-  float current_time;
+  float next_time;
   struct listiterator iterator = listiterator__init_iterator(parameters->event_list);
 
-  if (!listiterator__has_next(iterator)){
-    listiterator__insert_after(iterator, event);
-  } else {
+  if (!listiterator__has_next(iterator))
+  listiterator__insert_after(iterator,event);
+
+  else {
     while (listiterator__has_next(iterator)){
       iterator = listiterator__goto_next(iterator);
-      current_time = ((struct Event *)listiterator__get_data(iterator))->time;
+      next_time = ((struct Event *)listiterator__get_data(iterator))->time;
 
-      if(time < current_time){
-        listiterator__insert_before(iterator, event);
+      if(time > next_time){
+        listiterator__insert_before(iterator,event);
         break;
       }
     }
@@ -41,4 +42,27 @@ void add_event(struct Event * event, struct Parameters* parameters){
 
 void del_current_event(struct Parameters* parameters){
   ((struct Event *)listiterator__get_data(parameters->event_iterator))->type=DEL;
+}
+
+void print_event(struct Event* event){
+  printf("Type : %d\n", event->type);
+  printf("Time : %f\n", event->time);
+}
+
+void print_list(struct Parameters* parameters){
+  struct listiterator iterator = listiterator__init_iterator(parameters->event_list);
+
+  printf("\nlist_size : %d\n", linkedlist__get_size(parameters->event_list));
+  printf("HEAD : \n");
+  print_event((struct Event *)listiterator__get_data(iterator));
+
+  int i = 1;
+
+  while (listiterator__has_next(iterator)){
+    iterator = listiterator__goto_next(iterator);
+    printf("\nEVENT : %d\n", i);
+    print_event((struct Event *)listiterator__get_data(iterator));
+    i++;
+  }
+  printf("----------------------\n");
 }

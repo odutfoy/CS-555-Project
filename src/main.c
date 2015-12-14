@@ -18,6 +18,8 @@ int main(int argc, char *argv[]){
   while(1){
     clock_update(&parameters);
 
+    print_list(&parameters);
+
     if(((struct Event *)listiterator__get_data(parameters.event_iterator))->type == ARRIVAL){
       new_arrival_process(&parameters);
     }
@@ -27,8 +29,6 @@ int main(int argc, char *argv[]){
       perror("Bad event to process");
       exit(2);
     }
-
-    printf("Event list size: %d\n", linkedlist__get_size(parameters.event_list));
 
     test_stop_condition(&parameters);
   }
