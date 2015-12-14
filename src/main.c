@@ -7,13 +7,15 @@
 
 int main(int argc, char *argv[]){
 
-  float lambda=2.0;
-  float mu=20.0;
-  int m=2;
-  int c=50;
-  int max_clock=1000;
+  int initial_number_customers = 0;
 
-  struct Parameters parameters = initialize(lambda, mu, m, c, max_clock);
+  float lambda=10.0;
+  float mu=1.0;
+  int m=2;
+  int c=5;
+  int max_clock=100;
+
+  struct Parameters parameters = initialize(lambda, mu, m, c, max_clock, initial_number_customers);
 
   while(1){
     clock_update(&parameters);

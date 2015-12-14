@@ -21,15 +21,19 @@ void add_event(struct Event * event, struct Parameters* parameters){
   //For simpler code
   float time = event->time;
   float next_time;
+  struct listnode * next = parameters->event_list->headNode;
   struct listiterator iterator = listiterator__init_iterator(parameters->event_list);
 
   while (listiterator__has_next(iterator)){
-    next_time = ((struct Event*)(listnode__get_next(parameters->event_list->headNode))->data)->time;
+    next_time = ((struct Event*)(listnode__get_next(next))->data)->time;
+
     if(time < next_time)
       break;
+
+    next = listnode__get_next(next);
     iterator = listiterator__goto_next(iterator);
    }
-
+  
   listiterator__insert_after(iterator, event);
 }
 

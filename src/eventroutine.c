@@ -2,13 +2,12 @@
 
 void new_arrival_process(struct Parameters* parameters){
   add_event(create_arrival(parameters), parameters);
-
+  parameters->total_number_customers += 1;
   if(parameters->number_customers_in_queue >= parameters->c){
     /* If the buffer is full */
     parameters->number_blocked += 1;
     del_current_event(parameters);
   } else {
-    parameters->total_number_customers += 1;
     if(parameters->number_busy_servers >= parameters->m){
       parameters->number_customers_in_queue += 1;
     } else {
