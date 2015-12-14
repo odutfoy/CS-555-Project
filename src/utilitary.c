@@ -21,23 +21,26 @@ struct Event * create_event(float time, Type type){
 void add_event(struct Event * event, struct Parameters* parameters){
   //For simpler code
   float time = event->time;
-  float next_time;
+  float current_time;
   struct listiterator iterator = listiterator__init_iterator(parameters->event_list);
+  int initial_size = linkedlist__get_size(parameters->event_list);
 
   if (!listiterator__has_next(iterator))
-  listiterator__insert_after(iterator,event);
+    listiterator__insert_after(iterator, event);
 
   else {
     while (listiterator__has_next(iterator)){
       iterator = listiterator__goto_next(iterator);
-      next_time = ((struct Event *)listiterator__get_data(iterator))->time;
+      current_time = ((struct Event *)listiterator__get_data(iterator))->time;
 
-      if(time > next_time){
-        listiterator__insert_before(iterator,event);
+      if(time < current_time){
+        listiterator__insert_before(iterator, event);
         break;
       }
     }
   }
+  print_list(parameters);
+  assert(linkedlist__get_size(parameters->event_list) == initial_size + 1);
 }
 
 void del_current_event(struct Parameters* parameters){

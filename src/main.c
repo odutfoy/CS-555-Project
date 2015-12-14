@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
   while(1){
     clock_update(&parameters);
 
-    print_list(&parameters);
+    //print_list(&parameters);
 
     if(((struct Event *)listiterator__get_data(parameters.event_iterator))->type == ARRIVAL){
       new_arrival_process(&parameters);
