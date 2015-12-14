@@ -3,7 +3,7 @@
 /*
 * Initializes parameters and first events
 */
-struct Parameters initialize(float lambda, float mu, int m, int c, int max_clock, int initial_number_customers){
+struct Parameters initialize(float lambda, float mu, int m, int c, int max_clock, float warming_up_time,  int initial_number_customers){
 
   /* Tests if initial_number_customers value fits the system */
   if(initial_number_customers >= m+c){
@@ -24,6 +24,7 @@ struct Parameters initialize(float lambda, float mu, int m, int c, int max_clock
   struct Parameters parameters;
 
   parameters.clock=0;
+  parameters.warming_up_time=warming_up_time;
   if(initial_number_customers > m){
     parameters.number_busy_servers=m;
     parameters.number_customers_in_queue=initial_number_customers-m;

@@ -18,7 +18,6 @@ struct Event * create_event(float time, Type type){
 }
 
 void add_event(struct Event * event, struct Parameters* parameters){
-  //For simpler code
   float time = event->time;
   float next_time;
   struct listnode * next = parameters->event_list->headNode;

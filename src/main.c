@@ -5,17 +5,18 @@
 #include "initialize.h"
 #include "eventroutine.h"
 
-int main(int argc, char *argv[]){
+int main(){
 
   int initial_number_customers = 6;
+  float warming_up_time = 0;
 
-  float lambda=3.0;
-  float mu=3.0;
+  float lambda=4.0;
+  float mu=6.0;
   int m=2;
   int c=5;
-  int max_clock=100;
+  int max_clock=1000;
 
-  struct Parameters parameters = initialize(lambda, mu, m, c, max_clock, initial_number_customers);
+  struct Parameters parameters = initialize(lambda, mu, m, c, max_clock, warming_up_time, initial_number_customers);
 
   while(1){
     clock_update(&parameters);

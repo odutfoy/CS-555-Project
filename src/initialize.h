@@ -6,6 +6,6 @@
 #include "RNG.h"
 #include "utilitary.h"
 
-struct Parameters initialize(float lambda, float mu, int m, int c, int max_clock, int initial_number_customers);
+struct Parameters initialize(float lambda, float mu, int m, int c, int max_clock, float warming_up_time,  int initial_number_customers);
 
 #endif

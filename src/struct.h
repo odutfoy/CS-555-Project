@@ -23,6 +23,7 @@ enum Type
 */
 struct Parameters{
   float clock;
+  float warming_up_time;
   int number_busy_servers;
   int number_customers_in_queue;
   int time_of_last_event;
