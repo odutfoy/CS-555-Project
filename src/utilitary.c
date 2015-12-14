@@ -27,7 +27,7 @@ void add_event(struct Event * event, struct Parameters* parameters){
   int initial_size = linkedlist__get_size(parameters->event_list);
 
   while (listiterator__has_next(iterator)){
-      
+
     next_time = ((struct Event*)(listnode__get_next(parameters->event_list->headNode))->data)->time;
 
     if(time < next_time)
@@ -35,15 +35,18 @@ void add_event(struct Event * event, struct Parameters* parameters){
 
     iterator = listiterator__goto_next(iterator);
    }
-    
+
   listiterator__insert_after(iterator, event);
 
-  print_list(parameters);
   assert(linkedlist__get_size(parameters->event_list) == initial_size + 1);
 }
 
 void del_current_event(struct Parameters* parameters){
   ((struct Event *)listiterator__get_data(parameters->event_iterator))->type=DEL;
+}
+
+void free_event(struct Event* event){
+  free(event);
 }
 
 void print_event(struct Event* event){
