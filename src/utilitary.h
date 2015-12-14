@@ -38,10 +38,15 @@ void free_event(struct Event* event);
 **/
 void print_list(struct Parameters* parameter);
 
-/*
+/**
 * Print an event with its caracteristics
-*/
+**/
 void print_event(struct Event* event);
+
+/**
+ * Writes stats in a file
+**/
+void write_stats(struct Parameters* parameter);
 
 
 #endif

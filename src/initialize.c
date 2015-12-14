@@ -6,7 +6,10 @@
 struct Parameters initialize(float lambda, float mu, int m, int c, int max_clock, int initial_number_customers){
 
   /* Tests if initial_number_customers value fits the system */
-  assert(initial_number_customers <= m+c && "Too many initial customers for the system capacity");
+  if(initial_number_customers >= m+c){
+    perror("Too many initial customers for the system capacity");
+    exit(2);
+  }
 
   /* Creates first nodes (a event 0, an arrival and a departure) */
   struct Event * init_event=create_event(0.0, INIT);
@@ -48,7 +51,7 @@ struct Parameters initialize(float lambda, float mu, int m, int c, int max_clock
     add_event(create_departure(&parameters), &parameters);
   }
   int j=0;
-  for(j=0; j<parameters.number_busy_servers; j++){
+  for(j=0; j<parameters.number_customers_in_queue; j++){
     linkedlist__push_front(parameters.event_list, create_event(-1.00, ARRIVAL));
   }
 

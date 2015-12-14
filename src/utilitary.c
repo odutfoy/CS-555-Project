@@ -33,7 +33,7 @@ void add_event(struct Event * event, struct Parameters* parameters){
     next = listnode__get_next(next);
     iterator = listiterator__goto_next(iterator);
    }
-  
+
   listiterator__insert_after(iterator, event);
 }
 
@@ -76,4 +76,19 @@ void print_list(struct Parameters* parameters){
     i++;
   }
   printf("----------------------\n");
+}
+
+void write_stats(struct Parameters* parameters){
+  FILE *ca = fopen("tmp/customer-amount.csv", "a+");
+  FILE *cl = fopen("tmp/clock.csv", "a+");
+
+  assert(ca != NULL && cl != NULL && "Error opening file!");
+
+  int customer_amount = parameters->number_busy_servers + parameters->number_customers_in_queue;
+
+  fprintf(ca, "%d,", customer_amount);
+  fprintf(cl, "%f,", parameters->clock);
+
+  fclose(ca);
+  fclose(cl);
 }

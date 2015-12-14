@@ -7,10 +7,10 @@
 
 int main(int argc, char *argv[]){
 
-  int initial_number_customers = 0;
+  int initial_number_customers = 6;
 
-  float lambda=10.0;
-  float mu=1.0;
+  float lambda=3.0;
+  float mu=3.0;
   int m=2;
   int c=5;
   int max_clock=100;
@@ -36,6 +36,7 @@ int main(int argc, char *argv[]){
       exit(2);
     }
 
+    write_stats(&parameters);
     test_stop_condition(&parameters);
   }
   printf("Finished !");
