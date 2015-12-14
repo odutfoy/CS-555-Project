@@ -3,10 +3,10 @@
 void clock_update(struct Parameters* parameters){
   //Deleting first event if it is of type INIT
   if (((struct Event *)listiterator__get_data(parameters->event_iterator))->type == INIT
-  || ((struct Event *)listiterator__get_data(parameters->event_iterator))->type == DEL){
+  || ((struct Event *)listiterator__get_data(parameters->event_iterator))->type == DEL
+  || ((struct Event *)listiterator__get_data(parameters->event_iterator))->type == STAT){
     free_event(((struct Event *)listiterator__get_data(parameters->event_iterator)));
     parameters->event_iterator = listiterator__remove_node(parameters->event_iterator);
-    printf("One event deleted\n");
   }else{
     parameters->event_iterator = listiterator__goto_next(parameters->event_iterator);
   }

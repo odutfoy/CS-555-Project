@@ -30,6 +30,11 @@ void new_departure_process(struct Parameters* parameters){
   }
 }
 
+void stat_process(struct Parameters* parameters, float step_size){
+  write_stats(parameters);
+  add_event(create_event(parameters->clock + step_size, STAT), parameters);
+}
+
 void test_stop_condition(struct Parameters* parameters){
   if(parameters->clock >= parameters->max_clock){
     printf("Simulation finished\n");

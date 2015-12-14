@@ -54,6 +54,7 @@ struct Parameters initialize(float lambda, float mu, int m, int c, int max_clock
   for(j=0; j<parameters.number_customers_in_queue; j++){
     linkedlist__push_front(parameters.event_list, create_event(-1.00, ARRIVAL));
   }
+  add_event(create_event(0, STAT), &parameters);
 
   return parameters;
 }

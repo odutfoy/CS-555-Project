@@ -13,7 +13,7 @@ int main(){
   float lambda=2.0;
   float mu=1.0;
   int m=2;
-  int c=2;
+  int c=5;
   int max_clock=1000;
 
   struct Parameters parameters = initialize(lambda, mu, m, c, max_clock, warming_up_time, initial_number_customers);
@@ -32,12 +32,13 @@ int main(){
     }
     else if(((struct Event *)listiterator__get_data(parameters.event_iterator))->type == DEPARTURE){
       new_departure_process(&parameters);
+    }else if(((struct Event *)listiterator__get_data(parameters.event_iterator))->type == STAT){
+      stat_process(&parameters, 1.0);
     }else{
       perror("Bad event to process");
       exit(2);
     }
 
-    write_stats(&parameters);
     test_stop_condition(&parameters);
   }
   printf("Finished !");

@@ -8,6 +8,7 @@
 
 void new_arrival_process(struct Parameters* parameters);
 void new_departure_process(struct Parameters* parameters);
+void stat_process(struct Parameters* parameters, float step_size);
 void test_stop_condition(struct Parameters* parameters);
 void print_stats(struct Parameters* parameters);
 void increase_blocked(struct Parameters* parameters);

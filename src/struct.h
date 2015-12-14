@@ -6,7 +6,7 @@
 typedef enum Type Type;
 enum Type
 {
-  INIT, ARRIVAL, DEPARTURE, DEL
+  INIT, ARRIVAL, DEPARTURE, DEL, STAT
 };
 
 /*
