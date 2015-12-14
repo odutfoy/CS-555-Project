@@ -45,7 +45,7 @@ void test_stop_condition(struct Parameters* parameters){
 
 void print_stats(struct Parameters* parameters){
   printf("Blocking probability = %f\n", (float)parameters->number_blocked / (float)parameters->total_number_customers);
-  printf("Mean number of customers = %f\n", (float)(parameters->total_number_customers - parameters->number_blocked) / parameters->clock);
+  printf("Mean number of customers = %f\n", (float)(parameters->total_number_customers - parameters->number_blocked) / (parameters->clock - parameters->warming_up_time));
   printf("Mean time spent per customer = %f\n", (float)(parameters->total_time_spent) / (float)(parameters->total_number_customers - parameters->number_blocked));
 }
 

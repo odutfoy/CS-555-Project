@@ -84,8 +84,8 @@ void print_list(struct Parameters* parameters){
 }
 
 void write_stats(struct Parameters* parameters){
-  FILE *ca = fopen("tmp/customer-amount1.csv", "a+");
-  FILE *cl = fopen("tmp/clock1.csv", "a+");
+  FILE *ca = fopen("tmp/customer-amount5.csv", "a+");
+  FILE *cl = fopen("tmp/clock5.csv", "a+");
 
   assert(ca != NULL && cl != NULL && "Error opening file!");
 
